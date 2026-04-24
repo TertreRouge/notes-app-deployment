@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  duckdns:
+    image: linuxserver/duckdns:latest
+    container_name: duckdns
+    environment:
+      - SUBDOMAINS=${MY_SUBDOMAIN}
+      - TOKEN=${MY_TOKEN}
+      - LOG_FILE=false
+    restart: unless-stopped
+
+  db:
+    image: mongo:6.0
+    container_name: mongodb_container
+
+  backend:
+    build: ./backend
+    container_name: backend_container
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_container
+    ports:
+      - "443:443" # caddy on frontend service
+      - "80:80"
+    depends_on:
+      - backend
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

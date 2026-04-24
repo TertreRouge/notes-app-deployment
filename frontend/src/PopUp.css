@@ -1,0 +1,108 @@
+@font-face {
+    font-family: SanFranciscoRM;
+    src: url(assets/fonts/SF-Pro-Rounded-Medium.otf);
+}
+
+@font-face {
+    font-family: Creato;
+    src: url(assets/fonts/CreatoDisplay-Medium.otf);
+}
+
+.popup-slide{
+    width: 500px;
+    height: 440px;
+    background-color: #fff;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* border: 2px solid #000; */
+    padding: 20px;
+    border-radius: 30px;
+    visibility: visible;
+    box-shadow: 1px 1px 400px 600px #00000030;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.popup-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 2px solid #000; */
+    /* padding: 0px; */
+    height: 30px;
+}
+
+.back{
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #373A4005;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.save{
+    color: rgb(4, 188, 255);
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #373A4005;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.input-head{
+    width: 420px;
+    margin: 20px 20px 10px 20px;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    background-color: rgba(248, 124, 248, 0.211);
+    font-family: SanFranciscoRM;
+    letter-spacing: -1px;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.input-box{
+    width: 420px;
+    height: 260px;
+    border: 0px;
+    background-color: rgba(248, 124, 248, 0.211);
+    border-radius: 20px;
+    margin: 0px 20px 8px 20px;
+    padding: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.5;
+    font-family: Creato;
+}
+
+.input-box:focus, .input-head:focus{
+    outline: none;
+    background-color: rgba(248, 124, 248, 0.411);
+}
+
+.add-ons{
+    width: 16%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 72%;
+}
+
+.bold{
+    font-size: 14px;
+    /* font-weight: 00; */
+    background-color: transparent;
+    border: 0px;
+    font-family: Creato;
+    background-color: #00000005;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.bold:hover, .save:hover, .back:hover{
+    background-color: #00000015;
+}

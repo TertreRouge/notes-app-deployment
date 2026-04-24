@@ -1,0 +1,64 @@
+@font-face {
+    font-family: SanFranciscoRM;
+    src: url(assets/fonts/SF-Pro-Text-Semibold.otf);
+}
+
+@font-face {
+    font-family: Creato;
+    src: url(assets/fonts/CreatoDisplay-Medium.otf);
+}
+
+::selection{
+    background-color: #373A40;
+    color: #77c6ff;
+}
+
+.scrollView{
+    /* border: 2px solid black; */
+    width: 92%;
+    margin-top: 40px;
+    height: 78vh;
+    /* width: 100%; */
+    margin-left: 5%;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* gap: 10px; */
+}
+
+.scrollView::-webkit-scrollbar{
+    background: transparent;
+    width: 10px;
+}
+
+.scrollView::-webkit-scrollbar-thumb{
+    background: #00000050;
+    border-radius: 30px;
+}
+
+.slide{
+    width: 280px;
+    height: auto;
+    background-color: #ffffff60;
+    border-radius: 20px;
+    padding: 24px;
+    /* backdrop-filter: blur(10px); */
+    margin: 0px 20px 20px 0px;
+    /* flex: 1; */
+    cursor: pointer;
+}
+
+.slide:hover{
+    background-color: #ffffff95;
+}
+
+.noteHead{
+    font-family: SanFranciscoRM;
+    font-weight: 600;
+    letter-spacing: -1.2px;
+}
+
+.noteCaption{
+    /* font-weight: 600; */
+    font-family: Creato;
+}

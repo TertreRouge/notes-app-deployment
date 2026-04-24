@@ -1,0 +1,16 @@
+notespetproject67.duckdns.org {
+	# Backend proxy
+    handle_path /api/* {
+        reverse_proxy http://backend:2029
+    }
+
+	handle {
+        root * /usr/share/caddy
+        file_server
+        try_files {path} /index.html
+    }
+
+	log {
+		output file /var/log/caddy/access.log
+	}
+}

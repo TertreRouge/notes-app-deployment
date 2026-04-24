@@ -1,0 +1,13 @@
+FROM node:18.19.0-alpine3.18 as build-stage
+WORKDIR /app
+COPY package*.json .
+RUN npm install 
+COPY . .
+RUN npm run build
+
+FROM caddy:2.7-alpine
+COPY --from=build-stage /app/build /usr/share/caddy
+COPY Caddyfile /etc/caddy/Caddyfile
+EXPOSE 443
+EXPOSE 80
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]

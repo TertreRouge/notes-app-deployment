@@ -1,0 +1,41 @@
+---
+- name: Deploy Notes App
+  hosts: webserver
+  become: yes
+  vars:
+    repo_url: "github.com/TertreRouge/notes-app-deployment"
+    dest_dir: "/home/admin/app"
+
+  tasks:
+    - name: Install dependencies
+      apt:
+        name: [git, curl, ca-certificates, gnupg]
+        update_cache: yes
+        state: present
+
+    - name: Install Docker
+      shell: curl -fsSL https://get.docker.com | sh
+      args:
+        creates: /usr/bin/docker
+
+    - name: Clone repository
+      git:
+        repo: "https://github.com/TertreRouge/notes-app-deployment"
+        dest: "{{ dest_dir }}"
+        version: master
+        force: yes
+      become: yes
+      become_user: admin
+
+    - name: Create .env file
+      copy:
+        dest: "{{ dest_dir }}/.env"
+        content: |
+          MY_SUBDOMAIN={{ lookup('env', 'MY_SUBDOMAIN') }}
+          MY_TOKEN={{ lookup('env', 'MY_TOKEN') }}
+        owner: admin
+
+    - name: Run Docker Compose
+      shell:
+        cmd: docker compose up -d --build
+        chdir: "{{ dest_dir }}"

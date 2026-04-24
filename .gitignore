@@ -1,0 +1,6 @@
+.env
+.terraform*
+terraform.tfstate
+.terraform/
+backend/node_modules
+my-terraform-key.pem
